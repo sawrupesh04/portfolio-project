@@ -24,7 +24,7 @@
 7. yes
 
 
-###### Windows
+#### Windows
 1. Download Puttygen and Putty
 2. open puttygen click on load and chose key pair that donloaded when ec2 created
 3. click on generate private key and save 
@@ -36,30 +36,26 @@
 9. Type login id:ubuntu
 10. follow command below
 
-sudo apt-get update
-sudo apt-get install python-pip python-dev nginx git
 
-Y
+#### Commands
+1. sudo apt-get update
+2. sudo apt-get install python-pip python-dev nginx git
 
-sudo apt-get update
-sudo pip3 install virtualenv
-git clone https://github.com/mruanova/zillow.git
-cd zillow
-virtualenv venv
-source venv/bin/activate
-pip3 install -r requirements.txt
-pip3 install django bcrypt django-extensions
-pip3 install gunicorn
-cd zillow
-sudo vim settings.py
+3. Y
 
+4. sudo apt-get update
+5. sudo pip3 install virtualenv
+5. git clone https://github.com/sawrupesh04/portfolio-project
+6. cd portfolio-project
+7. virtualenv venv
+8. source venv/bin/activate
+9. pip3 install -r requirements.txt
+10. pip3 install django bcrypt django-extensions
+11. pip3 install gunicorn
+12. cd zillow
+13. sudo vim settings.py (Inside settings.py modify these lines allowed host public IP address I for INSERT) 
 
-Inside settings.py modify these lines allowed host public IP address I for INSERT
-
-i
-cd 
-
-ALLOWED_HOSTS = ['13.59.206.93']
+ALLOWED_HOSTS = ['54.161.147.133']
 
 add the line below to the bottom of the file
 
@@ -67,15 +63,14 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 
 Save your changes and quit. ESC :wq
 
-cd .. 
-python3 manage.py collectstatic
-gunicorn --bind 0.0.0.0:8000 portfolio.wsgi:application
+14. cd .. 
+15. python3 manage.py collectstatic
+16. gunicorn --bind 0.0.0.0:8000 portfolio.wsgi:application
 
-ctrl+c
+17. ctrl+c
 
-sudo vim /etc/systemd/system/gunicorn.service
+18. sudo vim /etc/systemd/system/gunicorn.service
 
-i
 
 [Unit]
 Description=gunicorn daemon
@@ -90,16 +85,14 @@ WantedBy=multi-user.target
 
 ESC :wq
 
-sudo systemctl daemon-reload
-sudo systemctl start gunicorn
-sudo systemctl enable gunicorn
-sudo vim /etc/nginx/sites-available/portfolio
-
-i
+19. sudo systemctl daemon-reload
+20. sudo systemctl start gunicorn
+21. sudo systemctl enable gunicorn
+22. sudo vim /etc/nginx/sites-available/portfolio
 
 server {
   listen 80;
-  server_name 54.161.147.136;
+  server_name 54.161.147.133;
   location = /favicon.ico { access_log off; log_not_found off; }
   location /static/ {
       root /home/ubuntu/portfolio-project;
@@ -112,9 +105,12 @@ server {
 
 ESC :wq
 
-sudo ln -s /etc/nginx/sites-available/portfolio /etc/nginx/sites-enabled
-sudo nginx -t
-sudo rm /etc/nginx/sites-enabled/default
-sudo service nginx restart
+23. sudo ln -s /etc/nginx/sites-available/portfolio /etc/nginx/sites-enabled
+24. sudo nginx -t
+25. sudo rm /etc/nginx/sites-enabled/default
+26. sudo service nginx restart
 
-http://54.161.147.136;
+27. http://54.161.147.133;
+
+
+### congratulations
