@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  {% load staticfiles %}
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Blog Home</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+        <a class="navbar-brand" href="{% url 'home' %}"><i>Rupesh Saw</i></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ml-auto">
+            <a class="nav-item nav-link" href="https://github.com/sawrupesh04">GitHub</a>
+            <a class="nav-item nav-link" href="https://www.linkedin.com/in/rupeshsaw/">Linked<span class="text-primary"><b>In</b></span></a>
+            <a class="nav-item nav-link" href="#">Twitter</a>
+            <a class="nav-item nav-link active" href="#"><b>Blog</b></a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Page Content -->
+    <div class="container pt-5">
+
+      <div class="row">
+
+        <!-- Blog Entries Column -->
+        <div class="col-md-8">
+
+          <h1 class="my-4 text-center">Welcome to Rupesh's Blog</h1>
+          <h1><small>Latest Blog</small></h1>
+          {% for blog in blogs.all %}
+          <div class="card mb-4">
+            <img class="card-img-top" src="{{ blog.image.url }}" alt="Card image cap">
+            <div class="card-body">
+              <h2 class="card-title">{{ blog.title }}</h2>
+              <p class="card-text">{{ blog.summary }} ..........</p>
+                <a href="{% url 'detail' blog.id %}" class="btn btn-primary">Read Full Blog &rarr;</a>
+            </div>
+            <div class="card-footer text-muted">
+              Posted on  &rarr; {{ blog.pub_preety_date }}, {{ blog.pub_preety_time }}
+            </div>
+          </div>
+          {% endfor %}
+
+
+          <!-- Pagination -->
+          <ul class="pagination justify-content-center mb-4">
+            <li class="page-item">
+              <a class="page-link" href="#">&larr; Older</a>
+            </li>
+            <li class="page-item disabled">
+              <a class="page-link" href="#">Newer &rarr;</a>
+            </li>
+          </ul>
+
+        </div>
+
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+
+
+
+          <!-- Side Widget -->
+          <div class="card my-4">
+            <h5 class="card-header">Side Widget</h5>
+            <div class="card-body">
+              You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-white">
+      <div class="container">
+        <p class="float-right">
+          <a href="#">Back to top</a>
+        </p>
+        <p class="m-0 text-center"> Copyright © Rupesh Saw {% now 'Y' %}</p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+
+</html>
