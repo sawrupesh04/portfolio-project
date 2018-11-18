@@ -1,17 +1,40 @@
-# portfolio-project
+### portfolio-project
 
-Python django deployment from GitHub to aws ec2
+## Python django deployment from GitHub to aws ec2
+#### steps for AWS
+1. Login AWS
+2. Go to EC2
+3. Create Instance and select Ubuntu Server 16.04 LTS
+4. chose by default t2.micro(free tier)
+5. Click review and next
+6. click on edit security group and chose Type-> shh and source --> My ip,  again chose add rule Type-> http and source --> AnyWhere and all are default in the same section.
+7. Chose review and launch
+8. create new pair and download
 
-cd Downloads/
-mv zillows.pem ~/Desktop/
-cd ..
-cd desktop
+#### linux or mac
+1. cd Downloads/
+2. mv zillows.pem ~/Desktop/
+3. cd ..
+4. cd desktop
 
-chmod
+5. chmod
 
-ssh
+6. ssh
 
-yes
+7. yes
+
+
+###### Windows
+1. Download Puttygen and Putty
+2. open puttygen click on load and chose key pair that donloaded when ec2 created
+3. click on generate private key and save 
+4. Open putty
+5. session section there are two section host(put public DNS from the ec2 instance running and port 22)
+6. left side of putty click on SSH and then Auth and chose private key which is generate from step 3
+7. Click open
+8. Now the terminal open
+9. Type login id:ubuntu
+10. follow command below
 
 sudo apt-get update
 sudo apt-get install python-pip python-dev nginx git
@@ -31,14 +54,14 @@ cd zillow
 sudo vim settings.py
 
 
-# Inside settings.py modify these lines allowed host public IP address I for INSERT
+Inside settings.py modify these lines allowed host public IP address I for INSERT
 
 i
 cd 
 
 ALLOWED_HOSTS = ['13.59.206.93']
 
-# add the line below to the bottom of the file
+add the line below to the bottom of the file
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 
