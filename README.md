@@ -1,6 +1,6 @@
 ### portfolio-project
 
-## Python django deployment from GitHub to aws ec2
+## Deploy Django Project from GitHub to AWS EC2
 #### steps for AWS
 1. Login AWS
 2. Go to EC2
